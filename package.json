@@ -7,6 +7,7 @@
     "start": "nodemon --watch app.js",
     "debug": "DEBUG=express:* nodemon -w app.js",
     "prod": "NODE_ENV=production node app.js",
+    "prod-debug": "NODE_ENV=production DEBUG=express:* nodemon -w app.js",
     "test": "mocha --watch"
   },
   "repository": {
