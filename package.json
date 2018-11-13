@@ -1,0 +1,43 @@
+{
+  "name": "shopcms",
+  "version": "1.0.0",
+  "description": "a nodejs shopping cms based on expressjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShahramMebashar/express-shopping-cms.git"
+  },
+  "keywords": [
+    "cms",
+    "shopping",
+    "shop",
+    "nodejs",
+    "js",
+    "javascript",
+    "content",
+    "managment",
+    "html",
+    "css",
+    "bootstrap",
+    "simple"
+  ],
+  "author": "Shahram Mebashar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ShahramMebashar/express-shopping-cms/issues"
+  },
+  "homepage": "https://github.com/ShahramMebashar/express-shopping-cms#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.0",
+    "express-session": "^1.15.6",
+    "express-validator": "^5.3.0",
+    "morgan": "^1.9.1",
+    "multer": "^1.4.1"
+  }
+}
