@@ -2,6 +2,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var exphbs  = require('express-handlebars');
 var path = require('path');
+var helmet = require('helmet');
 
 //App init
 var app = express();
@@ -16,7 +17,10 @@ app.set('view engine', 'hbs');
 app.use(express.static(path.resolve(__dirname, 'public')));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
-
+if(app.get('env') === 'production') {
+    console.log('production');
+    app.use(helmet());
+}
 //Routes
 app.get('/', function (req, res) {
     res.render('home', {title: 'Shopping cms'})
