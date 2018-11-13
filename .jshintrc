@@ -1,0 +1,9 @@
+{
+    "esversion": 6,
+    "strict": false,
+    "shadow": true,
+    "latedef": true,
+    "mocha": true,
+    "unused": true
+
+}
