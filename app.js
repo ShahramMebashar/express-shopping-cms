@@ -3,33 +3,41 @@ var bodyParser = require('body-parser');
 var exphbs  = require('express-handlebars');
 var path = require('path');
 var helmet = require('helmet');
+var logger = require('morgan');
+var favicon = require('serve-favicon');
 
 //App init
 var app = express();
+app.set('port', process.env.PORT || 3000);
 
 //App views and settings
+app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+if(app.get('env') === 'development') {
+    app.use(logger('dev'));
+} else {
+    app.use(helmet());
+}
+
 app.engine('hbs', exphbs({
     defaultLayout: 'default',
     extname: 'hbs'
 }));
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'hbs');
-app.use(express.static(path.resolve(__dirname, 'public')));
-app.use(bodyParser.urlencoded({extended: false}));
-app.use(bodyParser.json());
-if(app.get('env') === 'production') {
-    console.log('production');
-    app.use(helmet());
-}
+
 //Routes
 app.get('/', function (req, res) {
-    res.render('home', {title: 'Shopping cms'})
+    res.render('home', {title: 'Shopping cmss'})
 })
 
 //Server port and linstener
 if(!module.parent) {
-    app.listen(3000, () => {
-        console.log(`Server started on 3000`);
+    app.listen(app.get('port'), () => {
+        console.log(`Server started with ${app.get('env')} mode on ${app.get('port')}`);
     });
 }
 
