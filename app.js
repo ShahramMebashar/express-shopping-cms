@@ -5,6 +5,16 @@ var path = require('path');
 var helmet = require('helmet');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
+var mongoose = require('mongoose');
+var config = require('./config/database');
+
+//Database config and connection
+mongoose.connect(config.database,{useNewUrlParser: true});
+var db = mongoose.connection;
+db.once('open', function() {
+    console.log('database successfully connected!');
+});
+db.on('error', (error) => console.log(error));
 
 //App init
 var app = express();
@@ -31,7 +41,7 @@ app.set('view engine', 'hbs');
 
 //Routes
 app.get('/', function (req, res) {
-    res.render('home', {title: 'Shopping cmss'})
+    res.render('home', {title: 'Shopping CMS'})
 })
 
 //Server port and linstener
