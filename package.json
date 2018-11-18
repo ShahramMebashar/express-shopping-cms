@@ -4,10 +4,10 @@
   "description": "a nodejs shopping cms based on expressjs",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon --watch app.js",
-    "debug": "DEBUG=express:* nodemon -w app.js",
+    "start": "nodemon app.js --watch ./",
+    "debug": "DEBUG=express:* nodemon app.js -w ./",
     "prod": "NODE_ENV=production node app.js",
-    "prod-debug": "NODE_ENV=production DEBUG=express:* nodemon -w app.js",
+    "prod-debug": "NODE_ENV=production DEBUG=express:* nodemon app.js -w ./",
     "test": "mocha --watch"
   },
   "repository": {
@@ -36,9 +36,9 @@
   "homepage": "https://github.com/ShahramMebashar/express-shopping-cms#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.16.4",
+    "express-flash": "0.0.2",
     "express-handlebars": "^3.0.0",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.6",
