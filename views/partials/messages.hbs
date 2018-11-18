@@ -1,7 +1,6 @@
-{{#if messages}}
-    <ul>
-        {{#each messages as |message|}}
-        <li> {{message}}</li>
-        {{/each}}
-    </ul>
-{{/if}}
+<container>
+{{#each messages}}
+    <li class="alert alert-{{@key}}">{{this}}</li>
+{{/each}}
+</container>
+

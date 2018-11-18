@@ -35,7 +35,7 @@ app.use(session({
     saveUninitialized: true,
     cookie: {
         secure: false,
-        //maxAge: new Date(Date.now() + 460000)
+        maxAge: new Date(Date.now() + 460000)
     }
 }));
 
@@ -56,7 +56,9 @@ app.use(validator({
     }
 }));
 
-app.use(require('connect-flash')());
+//Flash and messages
+// app.use(require('connect-flash')());
+app.use(require('express-flash')());
 app.use(function (req, res, next) {
     res.locals.messages = require('express-messages')(req, res);
     next();
@@ -70,7 +72,9 @@ if(app.get('env') === 'development') {
 
 app.engine('hbs', exphbs({
     defaultLayout: 'default',
-    extname: 'hbs'
+    extname: 'hbs',
+    helpers: {
+    }
 }));
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'hbs');
